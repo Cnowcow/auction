@@ -1,0 +1,49 @@
+# 애플리케이션의 기본 설정
+spring:
+  application:
+    name: auction
+
+  # 데이터베이스 설정 (예: H2 데이터베이스)
+  datasource:
+    url: jdbc:mysql://49.50.167.118:3306/auctiondb
+    username: root
+    password: Dlwpdud123!@#
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 10
+      pool-name: HikariPool
+      auto-commit: true
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+
+
+
+  # JPA 설정
+  jpa:
+    hibernate:
+      ddl-auto: update # 'update', 'create', 'create-drop', 'none'
+      dialect: org.hibernate.dialect.MySQLDialect
+    show-sql: true
+
+  # 로그 설정
+  logging:
+    level:
+      root: INFO
+      org.springframework.web: DEBUG
+      com.example: DEBUG
+
+  # JWT 관련 설정
+  jwt:
+    secret-key: yourSecretKey # JWT 서명 비밀 키
+    expiration-time: 86400000 # JWT 만료 시간 (밀리초 단위, 1일 = 86400000ms)
+
+  # 서버 포트 설정
+  server:
+    port: 8080
+
+  # Spring Security 설정
+  security:
+    user:
+      name: admin # 기본 사용자 이름
+      password: password # 기본 사용자 비밀번호

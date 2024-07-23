@@ -37,7 +37,9 @@ dependencies {
     //GSON  : JSON 관련 처리 용이하게하기위함
     implementation 'com.google.code.gson:gson:2.10.1'
 
-
+    //spring security  & jwt 토큰 을 사용해서 로그인 구현 예정
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'io.jsonwebtoken:jjwt:0.9.1'
 
 }
 
