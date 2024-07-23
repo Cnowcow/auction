@@ -6,8 +6,8 @@ spring:
   # 데이터베이스 설정 (예: H2 데이터베이스)
   datasource:
     url: jdbc:mysql://49.50.167.118:3306/auctiondb
-    username: root
-    password: Dlwpdud123!@#
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
       maximum-pool-size: 10
