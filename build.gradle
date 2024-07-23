@@ -33,6 +33,12 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    //GSON  : JSON 관련 처리 용이하게하기위함
+    implementation 'com.google.code.gson:gson:2.10.1'
+
+
+
 }
 
 tasks.named('test') {
