@@ -2,34 +2,39 @@ package com.stu.auction.core.config.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
     @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+    @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-                .authorizeRequests()
-                .requestMatchers("/*")
-                .permitAll()
-//                .antMatchers("/", "/home").permitAll() // 특정 경로 접근 허용
-                .anyRequest().authenticated() ;// 나머지 경로는 인증 필요
-//                .and()
-//                .formLogin()
-//                .loginPage("/custom-login") // 사용자 정의 로그인 페이지 설정
-//                .permitAll() // 로그인 페이지 접근 허용
-//                .and()
-//                .logout()
-//                .permitAll(); // 로그아웃 접근 허용
-
-        return http.build();
+        return
+                http
+                        .authorizeHttpRequests( request ->{
+//                    request.antMatchers("/user/**").authenticated();
+//                    request.antMatchers("/manager/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_MANAGER')");
+//                    request.antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')");
+                    request.anyRequest().permitAll();
+                })
+                        .csrf(httpSecurityCsrfConfigurer -> httpSecurityCsrfConfigurer.disable())
+                        .build();
     }
 
     @Bean
