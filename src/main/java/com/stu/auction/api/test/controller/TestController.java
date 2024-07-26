@@ -1,12 +1,12 @@
 package com.stu.auction.api.test.controller;
 
+import com.stu.auction.api.test.entity.Test;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @RestController
@@ -35,6 +35,15 @@ public class TestController {
         logger.info("reservation test");
         return modelAndView;
     }
+
+
+/*    @PostMapping("/save")
+    public Test reservationSave(HttpServletRequest request, HttpServletResponse response) throws Exception{
+
+
+        return reservationSave();
+    }*/
+
 
 
 }
