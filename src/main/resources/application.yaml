@@ -37,9 +37,9 @@ spring:
 
   # JWT 관련 설정
   jwt:
-    secret-key: yourSecretKey # JWT 서명 비밀 키
-    expiration-time: 86400000 # JWT 만료 시간 (밀리초 단위, 1일 = 86400000ms)
-
+    secret-key: yourSecretKeyyourSecretKeyyourSecretKeyyourSecretKeyyourSecretKeyyourSecretKeyyourSecretKey # JWT 서명 비밀 키
+    access-expiration-time: 3600000 # JWT 만료 시간 1시간
+    refresh-expiration-time: 86400000 # refresh token 만료시간 : 1일
   # 서버 포트 설정
   server:
     port: 8080

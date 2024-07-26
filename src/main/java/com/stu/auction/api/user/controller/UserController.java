@@ -13,12 +13,25 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/user")
 public class UserController {
 
-    @Autowired
-    UserService userService;
+    private final UserService userService;
+
+    // 생성자 주입
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
+
 
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody User user) {
 
         return userService.saveUser(user);
     }
+    
+//    @PostMapping("/login")
+//    public ResponseEntity<?> login(@RequestBody User user) {
+//
+//        return ResponseEntity.ok("성공");
+//    }
+
 }

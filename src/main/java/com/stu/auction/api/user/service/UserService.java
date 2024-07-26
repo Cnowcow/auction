@@ -14,11 +14,14 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class UserService {
 
-    @Autowired
-    PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
+    private final UserRepository userRepository;
 
-    @Autowired
-    UserRepository userRepository;
+    // 생성자 주입
+    public UserService(PasswordEncoder passwordEncoder, UserRepository userRepository) {
+        this.passwordEncoder = passwordEncoder;
+        this.userRepository = userRepository;
+    }
 
     public ResponseEntity<?> saveUser (User user){
 
