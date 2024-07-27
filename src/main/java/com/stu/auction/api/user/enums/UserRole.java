@@ -17,9 +17,18 @@ public enum UserRole {
 
     ;
 
-    private String desc;
+    private final String desc;
 
     UserRole(String desc){
         this.desc = desc;
+    }
+
+    public static UserRole getUserRole(String name) {
+        for (UserRole role : UserRole.values()) {
+            if (role.name().equalsIgnoreCase(name)) {
+                return role;
+            }
+        }
+        throw new IllegalArgumentException("No matching user role for name: " + name);
     }
 }

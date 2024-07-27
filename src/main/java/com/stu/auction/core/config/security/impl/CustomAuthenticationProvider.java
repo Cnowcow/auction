@@ -41,7 +41,9 @@ public class CustomAuthenticationProvider  implements AuthenticationProvider {
             throw new BadCredentialsException("Invalid password");
         }
 
-        return new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());
+        // 로그인 정상 성공.
+        System.out.println(userDetails.toString() + "::::::::::::" + "로그인 성공 ") ;
+        return new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
     }
 
     @Override
