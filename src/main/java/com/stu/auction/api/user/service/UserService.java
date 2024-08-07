@@ -26,7 +26,7 @@ public class UserService {
     public ResponseEntity<?> saveUser (User user){
 
         try{
-            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            user.setEncodingPassword(passwordEncoder.encode(user.getPassword()));
             userRepository.save(user);
             return ResponseEntity.ok(new SuccessResponseDto("회원가입성공" ,user , 200 ));
         }catch(Exception e ) {

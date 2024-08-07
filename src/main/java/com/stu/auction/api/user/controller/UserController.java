@@ -1,5 +1,6 @@
 package com.stu.auction.api.user.controller;
 
+import com.stu.auction.api.user.dto.RegisterUserDto;
 import com.stu.auction.api.user.entity.User;
 import com.stu.auction.api.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,9 @@ public class UserController {
 
 
     @PostMapping("/register")
-    public ResponseEntity<?> registerUser(@RequestBody User user) {
+    public ResponseEntity<?> registerUser(@RequestBody RegisterUserDto registerUserDto) {
+
+        User user = new User ( registerUserDto) ;
 
         return userService.saveUser(user);
     }

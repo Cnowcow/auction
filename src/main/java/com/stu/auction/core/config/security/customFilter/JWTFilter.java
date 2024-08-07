@@ -61,9 +61,7 @@ public class JWTFilter extends OncePerRequestFilter {
         List<String> roles = jwtUtil.getRole(token);
 
 
-        User user = new User();
-        user.setUsername(username);
-        user.setRoles(roles.stream().map(UserRole::getUserRole).collect(Collectors.toSet()));
+        User user = User.loginByToken( username , roles.stream().map(UserRole::getUserRole).collect(Collectors.toSet()));
 
         CustomUserDetails customUserDetails = new CustomUserDetails(user);
         Authentication authToken = new UsernamePasswordAuthenticationToken(customUserDetails, null, customUserDetails.getAuthorities());

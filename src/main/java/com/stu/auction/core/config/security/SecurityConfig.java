@@ -56,7 +56,8 @@ public class SecurityConfig {
         //http basic 인증 방식 disable
         http    .httpBasic((auth) -> auth.disable());
         http    .authorizeHttpRequests((auth) -> auth
-                        .requestMatchers("/login", "/", "/join","/user/register").permitAll()
+//                        .requestMatchers("/login", "/", "/join","/user/register").permitAll()
+                        .requestMatchers("/**").permitAll()
                         .requestMatchers("/admin").hasRole("ADMIN")
                         .anyRequest().authenticated());
 
